@@ -1,0 +1,23 @@
+...Github...
+
+# Initialize a new Git repository :
+    git init 
+
+# Clone an existing repository :
+    git clone <repository-url>
+
+# Set global username and email (First Time or One time setup) :
+    git config --global user.name "Your Name"
+    git config --global user.email "your.email@example.com"
+
+# Add one file :
+    git add <filename>
+
+# Add all files :
+    git add .
+
+# Commit staged changes with a message :
+    git commit -m "Your commit message"
+
+# Push file :
+    git push origin main
