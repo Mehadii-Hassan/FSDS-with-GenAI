@@ -23,3 +23,22 @@
     git push origin main
 
 
+#create venv (open anaconda prompt and this command using C drive storage)
+conda create -n venv python=3.9 -y
+
+#active venv
+conda activate venv
+
+#check env
+conda env list
+
+##create venv (open open vs code > cmd  and go to the exact folder and this command using project folder storage storage)
+conda create --prefex .\venv python=3.9 -y
+
+#activate venv
+conda activate .\venv
+
+#requirements.txt
+pip install -r requirements.txt
+
+
