@@ -31,7 +31,7 @@ class AtmMachine:
             self.pin = user_pin
             print("PIN created successfully!")
 
-            user_balance = input("Enter your Balance : ")
+            user_balance = float(input("Enter your Balance : "))
             self.balance = user_balance
             print("Balance Depostite successfully!")
         else:
@@ -54,7 +54,7 @@ class AtmMachine:
     def check_balance(self):
         user_pin = input("Enter your PIN : ")
         if user_pin == self.pin:
-            print(f"Your Balance is BDT-{self.balance}")
+            print(f"Your Balance is BDT : {self.balance}")
         else:
             print("Your PIN is incorrect, Please try again!")
         self.menu()
@@ -65,7 +65,7 @@ class AtmMachine:
             amount = float(input("Enter your amount to withdraw : "))
             if amount <= self.balance:
                 self.balance -= amount
-                print(f"You have withdrawn BDT-{amount}. Your new balance is BDT-{self.balance}")
+                print(f"You have withdrawn BDT : {amount}. Your new balance is BDT : {self.balance}")
             else:
                 print("Insufficient balance!")
         else:
@@ -73,4 +73,3 @@ class AtmMachine:
         self.menu()
 
 atm = AtmMachine()
-        
