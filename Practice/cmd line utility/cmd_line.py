@@ -14,7 +14,7 @@ def calculator(args):
             return "Error: Division by zero"
         return args.a / args.b
     else:
-        return "Error: Invalid operator"
+        return "Error: Invalid operator" 
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--a", type=float, default=1.0)
