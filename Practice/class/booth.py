@@ -4,7 +4,7 @@ class AtmMachine:
         self.balance = 0
         self.menu()
 
-    def menu(self):
+    def menu(self): 
         user_input = input("""
         Welcome to ATM Machine : 
             1. Press 1 to create pin
