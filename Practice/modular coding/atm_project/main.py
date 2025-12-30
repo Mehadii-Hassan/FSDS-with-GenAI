@@ -5,7 +5,7 @@ def main():
     print("=== WELCOME TO PYTHON BANK ===")
 
     card = input("Enter Card Number : ")
-    pin = input("Enter PIN : ")
+    pin = input("Enter PIN : ") 
 
     if auth.login(card, pin):
         print(f"\nLogin Successful! Welcome, User {card}")
