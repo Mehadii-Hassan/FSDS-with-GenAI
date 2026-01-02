@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Average Marks Calculator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
-<div class="container">
-    <h1>Welcome Student</h1>
-    <p>Click below to calculate your average marks</p>
-
-    <a href="/calculator">
-        <button>Start Calculating</button>
-    </a>
-</div>
-
+    <div class="container">
+        <h1>Welcome to the Average Marks Calculator</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Calculate your average marks easily and find out your result!
+        </p>
+        <div class="home-link">
+            <a href="{{ url_for('calculate') }}" class="btn btn-primary">Start Calculating</a>
+        </div>
+    </div>
 </body>
 </html>

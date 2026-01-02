@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result - Average Marks Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        {% if results >= 50 %}
+        <div class="result-pass">
+            <h1>✓ Congratulations! You Passed</h1>
+            <div class="score-display">Average Marks: {{ "%.2f"|format(results) }}</div>
+        </div>
+        {% else %}
+        <div class="result-fail">
+            <h1>✗ Sorry! You Failed</h1>
+            <div class="score-display">Average Marks: {{ "%.2f"|format(results) }}</div>
+        </div>
+        {% endif %}
+
+        <div class="home-link">
+            <a href="{{ url_for('calculate') }}">Calculate Again</a>
+        </div>
+    </div>
+</body>
+</html>
