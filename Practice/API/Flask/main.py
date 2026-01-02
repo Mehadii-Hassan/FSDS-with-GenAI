@@ -6,8 +6,8 @@ app = Flask(__name__)
 def welcome():
     return render_template("index.html")
 
-@app.route("/calculator")
-def calculator():
+@app.route("/calculate")
+def calculatte():
     return render_template("calculator.html")
 
 if __name__ == "__main__":
