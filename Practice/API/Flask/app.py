@@ -3,14 +3,16 @@ from flask import Flask, render_template
 app = Flask(__name__) #flask server initialization
 
 @app.route("/")
-def index():
-    return render_template("index.html")
+def home():
+    return "Hello flask"
 
 @app.route("/welcome")
 def welcome():
     return "welcome to the Flask Application"
 
-
+@app.route("/index")
+def index():
+    return render_template("index.html")
 
 @app.route("/success/<int:score>")
 def success(score):
