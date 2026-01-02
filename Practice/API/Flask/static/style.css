@@ -1,39 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .container {
-    width: 400px;
-    margin: 120px auto;
     background: white;
-    padding: 30px;
-    text-align: center;
-    border-radius: 8px;
-}
-
-label {
-    display: block;
-    text-align: left;
-    margin-top: 15px;
-}
-
-input {
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    max-width: 500px;
     width: 100%;
-    padding: 8px;
-    margin-top: 5px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+h2 {
+    color: #667eea;
+    text-align: center;
+}
+
+.calculate {
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+input[type="text"]::placeholder {
+    color: #999;
 }
 
 button {
-    margin-top: 20px;
-    padding: 10px;
-    width: 100%;
-    background: #007BFF;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
 button:hover {
-    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.btn {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.result-pass {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.result-fail {
+    background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.result-pass h1,
+.result-fail h1 {
+    color: white;
+    margin: 0;
+}
+
+.score-display {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.home-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.home-link a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.home-link a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    button {
+        padding: 10px 12px;
+        font-size: 0.95em;
+    }
 }
