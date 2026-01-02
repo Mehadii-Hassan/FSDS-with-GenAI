@@ -2,6 +2,16 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 
 app = Flask(__name__) 
 
+# @app.route("/")
+# def home():
+#     return "Hello, Flask!"
+
+
+@app.route("/welcome")
+def welcome():
+    return "Welcome to the Flask Application!"
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -29,7 +39,15 @@ def calculate():
 
         average_score = (maths + science + history) / 3 
         
-        return render_template("result.html", result = average_score)
+        # result = ""
+        # if average_score >= 50:
+        #     result = "success"
+        # else:
+        #     result = "fail"
+
+        # return redirect(url_for(result, score=average_score))
+
+        return render_template("result.html", results=average_score)
 
 
 
@@ -51,7 +69,7 @@ def api_calculate():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
 
 
 
