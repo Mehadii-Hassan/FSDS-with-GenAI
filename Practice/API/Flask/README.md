@@ -8,4 +8,4 @@
 > conda activate .\venv
 
 # Install required packages:
-> pip install -r requirements.tx
+> pip install -r requirements.txt
