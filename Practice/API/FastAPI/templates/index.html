@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea House</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🍵 Welcome to Tea House</h1>
+        
+        <!-- Forms Section -->
+        <div class="forms-section">
+            <!-- Add Tea Form -->
+            <div class="form-container">
+                <h2>➕ Add a New Tea</h2>
+                <form id="addTeaForm">
+                    <input type="number" id="addTeaId" placeholder="Tea ID" required>
+                    <input type="text" id="addTeaName" placeholder="Tea Name" required>
+                    <input type="text" id="addTeaOrigin" placeholder="Tea Origin" required>
+                    <button type="submit">Add Tea</button>
+                </form>
+            </div>
+
+            <!-- Update Tea Form -->
+            <div class="form-container">
+                <h2>✏️ Update Tea</h2>
+                <form id="updateTeaForm">
+                    <input type="number" id="updateTeaId" placeholder="Tea ID to Update" required>
+                    <input type="text" id="updateTeaName" placeholder="New Tea Name" required>
+                    <input type="text" id="updateTeaOrigin" placeholder="New Tea Origin" required>
+                    <button type="submit">Update Tea</button>
+                </form>
+            </div>
+
+            <!-- Delete Tea Form -->
+            <div class="form-container">
+                <h2>🗑️ Delete Tea</h2>
+                <form id="deleteTeaForm">
+                    <input type="number" id="deleteTeaId" placeholder="Tea ID to Delete" required>
+                    <button type="submit">Delete Tea</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Get/View Teas Section -->
+        <div class="teas-container">
+            <h2>📋 All Teas (GET)</h2>
+            <button id="refreshBtn" class="refresh-btn">🔄 Refresh</button>
+            <div id="teasList" class="teas-list">
+                <p class="empty-message">Click Refresh to load teas!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch and display teas (GET)
+        async function loadTeas() {
+            try {
+                const response = await fetch('/getteas');
+                const teas = await response.json();
+                const teasList = document.getElementById('teasList');
+                
+                if (teas.length === 0) {
+                    teasList.innerHTML = '<p class="empty-message">No teas found. Add one using the form above!</p>';
+                } else {
+                    teasList.innerHTML = teas.map(tea => `
+                        <div class="tea-card">
+                            <h3>${tea.name}</h3>
+                            <p><strong>ID:</strong> ${tea.id}</p>
+                            <p><strong>Origin:</strong> ${tea.origin}</p>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading teas:', error);
+                alert('Error loading teas: ' + error.message);
+            }
+        }
+
+        // Add tea (POST)
+        document.getElementById('addTeaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const teaData = {
+                id: parseInt(document.getElementById('addTeaId').value),
+                name: document.getElementById('addTeaName').value,
+                origin: document.getElementById('addTeaOrigin').value
+            };
+
+            try {
+                const response = await fetch('/addteas', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(teaData)
+                });
+
+                if (response.ok) {
+                    document.getElementById('addTeaForm').reset();
+                    loadTeas();
+                    alert('✅ Tea added successfully!');
+                } else {
+                    alert('❌ Error adding tea');
+                }
+            } catch (error) {
+                console.error('Error adding tea:', error);
+                alert('Error adding tea: ' + error.message);
+            }
+        });
+
+        // Update tea (PUT)
+        document.getElementById('updateTeaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const teaId = parseInt(document.getElementById('updateTeaId').value);
+            const teaData = {
+                id: teaId,
+                name: document.getElementById('updateTeaName').value,
+                origin: document.getElementById('updateTeaOrigin').value
+            };
+
+            try {
+                const response = await fetch(`/updatetea/${teaId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(teaData)
+                });
+
+                const result = await response.json();
+                
+                if (response.ok && !result.error) {
+                    document.getElementById('updateTeaForm').reset();
+                    loadTeas();
+                    alert('✅ Tea updated successfully!');
+                } else {
+                    alert('❌ ' + (result.error || 'Error updating tea'));
+                }
+            } catch (error) {
+                console.error('Error updating tea:', error);
+                alert('Error updating tea: ' + error.message);
+            }
+        });
+
+        // Delete tea (DELETE)
+        document.getElementById('deleteTeaForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const teaId = parseInt(document.getElementById('deleteTeaId').value);
+            
+            if (!confirm(`Are you sure you want to delete tea with ID ${teaId}?`)) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`/deletetea/${teaId}`, {
+                    method: 'DELETE'
+                });
+
+                const result = await response.json();
+                
+                if (response.ok && !result.error) {
+                    document.getElementById('deleteTeaForm').reset();
+                    loadTeas();
+                    alert('✅ Tea deleted successfully!');
+                } else {
+                    alert('❌ ' + (result.error || 'Error deleting tea'));
+                }
+            } catch (error) {
+                console.error('Error deleting tea:', error);
+                alert('Error deleting tea: ' + error.message);
+            }
+        });
+
+        // Refresh button
+        document.getElementById('refreshBtn').addEventListener('click', loadTeas);
+
+        // Load teas on page load
+        loadTeas();
+    </script>
+</body>
+</html>
