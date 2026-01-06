@@ -4,6 +4,7 @@ from typing import List
 import uvicorn
 import os
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 app = FastAPI() #server initilization
 
@@ -23,7 +24,8 @@ teas : List[Tea] = []
 
 @app.get("/")
 def read_root():
-    return {"message" : "welcome to the Tea House"}
+    templates_dir = os.path.join(os.path.dirname(__file__), "templates")
+    return FileResponse(os.path.join(templates_dir, "index.html"), media_type="text/html")
 
 
 @app.post("/addteas")
