@@ -1,3 +1,5 @@
+# How to run?
+
 # Create a virtual environment
 
 > conda create --prefix .\venv python=3.11 -y #for perticular project folder
