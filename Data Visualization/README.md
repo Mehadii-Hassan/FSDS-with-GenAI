@@ -7,7 +7,7 @@
 > conda create -n venv python=3.11 -y #for C drive
 
 # Activate virtual environment
-> conda activate .\venv
+> conda activate .\venv 
 
 # Install required packages:
-> pip install -r requirements.txt  
+> pip install -r requirements.txt
