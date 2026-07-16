@@ -1,0 +1,4 @@
+# Ignore saved model files so large binaries are not pushed to GitHub
+model/
+!model/.gitkeep
+model/model_vgg16.h5
