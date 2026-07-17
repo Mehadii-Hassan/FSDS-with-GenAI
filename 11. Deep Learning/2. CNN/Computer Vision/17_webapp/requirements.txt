@@ -1,5 +1,0 @@
-tensorflow==2.20.0
-Flask 
-numpy
-pillow 
-gdown
