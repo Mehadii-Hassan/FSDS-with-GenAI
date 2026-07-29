@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <!-- Inter Font Family for modern presentation -->
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="logo">⚡ AgenticAI</div>
+            <h1>Cognitive Search & Weather Engine</h1>
+            <p class="subtitle">Created by Md. Mehadi hassan</p>
+        </header>
+
+        <main>
+            <div class="card search-card">
+                <label for="queryInput">What would you like the agent to investigate?</label>
+                <div class="input-group">
+                    <input type="text" id="queryInput" placeholder="e.g., Find the capital of India and then find its current weather." autocomplete="off">
+                    <button id="submitBtn">Execute Agent</button>
+                </div>
+                <div class="suggestions">
+                    <span class="tag">Try:</span>
+                    <button class="suggestion-tag">Weather in Tokyo</button>
+                    <button class="suggestion-tag">Who won the latest Super Bowl and what is the weather in that city?</button>
+                </div>
+            </div>
+
+            <div class="card response-card hidden" id="responseCard">
+                <div class="card-header">
+                    <h3>Execution Result</h3>
+                    <span class="status-badge" id="statusBadge">Completed</span>
+                </div>
+                <div class="loader-container hidden" id="loader">
+                    <div class="spinner"></div>
+                    <p>Agent is reasoning, browsing the web, and compiling facts...</p>
+                </div>
+                <div id="outputContent" class="output-content"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>FSDS Generative AI Architecture Environment</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
