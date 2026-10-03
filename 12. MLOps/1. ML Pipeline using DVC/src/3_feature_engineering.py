@@ -39,7 +39,7 @@ test_df['label'] = y_test
 # store the data inside data/features
 data_path = os.path.join("data","features")
 
-os.makedirs(data_path)
+os.makedirs(data_path, exist_ok=True)
 
-train_df.to_csv(os.path.join(data_path,"train_bow.csv"))
-test_df.to_csv(os.path.join(data_path,"test_bow.csv"))
+train_df.to_csv(os.path.join(data_path,"train_bow.csv"), index=False)
+test_df.to_csv(os.path.join(data_path,"test_bow.csv"), index=False)

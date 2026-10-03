@@ -23,8 +23,10 @@ def load_data(data_url: str) -> pd.DataFrame:
 def preprocess_data(df: pd.DataFrame) -> pd.DataFrame:
     try:
         df.drop(columns=['tweet_id'], inplace=True)
-        final_df = df[df['sentiment'].isin(['happiness', 'sadness'])]
-        final_df['sentiment'].replace({'happiness': 1, 'sadness': 0}, inplace=True)
+        final_df = df.loc[df['sentiment'].isin(['happiness', 'sadness'])].copy()
+        final_df['sentiment'] = final_df['sentiment'].map(
+            {'happiness': 1, 'sadness': 0}
+        )
         return final_df
     except KeyError as e:
         print(f"Error: Missing column {e} in the dataframe.")

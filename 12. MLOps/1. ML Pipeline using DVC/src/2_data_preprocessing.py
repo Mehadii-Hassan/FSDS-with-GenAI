@@ -77,7 +77,7 @@ test_processed_data = normalize_text(test_data)
 # store the data inside data/processed
 data_path = os.path.join("data","processed")
 
-os.makedirs(data_path)
+os.makedirs(data_path, exist_ok=True)
 
-train_processed_data.to_csv(os.path.join(data_path,"train_processed.csv"))
-test_processed_data.to_csv(os.path.join(data_path,"test_processed.csv"))
+train_processed_data.to_csv(os.path.join(data_path,"train_processed.csv"), index=False)
+test_processed_data.to_csv(os.path.join(data_path,"test_processed.csv"), index=False)

@@ -1,0 +1,45 @@
+stages:
+  data_ingestion:
+    cmd: python src/1_data_ingestion.py
+    wdir: 1. ML Pipeline using DVC
+    deps:
+      - src/1_data_ingestion.py
+    outs:
+      - data/raw
+
+  data_preprocessing:
+    cmd: python src/2_data_preprocessing.py
+    wdir: 1. ML Pipeline using DVC
+    deps:
+      - data/raw
+      - src/2_data_preprocessing.py
+    outs:
+      - data/processed
+
+  feature_engineering:
+    cmd: python src/3_feature_engineering.py
+    wdir: 1. ML Pipeline using DVC
+    deps:
+      - data/processed
+      - src/3_feature_engineering.py
+    outs:
+      - data/features
+
+  model_building:
+    cmd: python src/4_model_building.py
+    wdir: 1. ML Pipeline using DVC
+    deps:
+      - data/features
+      - src/4_model_building.py
+    outs:
+      - model.pkl
+
+  model_evaluation:
+    cmd: python src/5_model_evaluation.py
+    wdir: 1. ML Pipeline using DVC
+    deps:
+      - data/features/test_bow.csv
+      - model.pkl
+      - src/5_model_evaluation.py
+    metrics:
+      - metrics.json
