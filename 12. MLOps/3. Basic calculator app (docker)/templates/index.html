@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="calculator-card">
+        <div class="eyebrow">QUICK MATH</div>
+        <h1>Colorful Calculator</h1>
+        <p class="subtitle">Choose an operation and enter two numbers.</p>
+        <form action="{{ url_for('math_operation') }}" method="POST">
+            <label for="operation">Operation</label>
+            <select id="operation" name="operation">
+                <option value="add">Add</option>
+                <option value="subtract">Subtract</option>
+                <option value="multiply">Multiply</option>
+                <option value="divide">Divide</option>
+            </select>
+            <label for="num1">First number</label>
+            <input type="number" name="num1" id="num1" step="1" required>
+            <label for="num2">Second number</label>
+            <input type="number" name="num2" id="num2" step="1" required>
+            <button type="submit">Calculate</button>
+        </form>
+    </main>
+</body>
+</html>

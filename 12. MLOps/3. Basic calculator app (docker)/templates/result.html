@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Calculator Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="calculator-card result-card">
+        <div class="eyebrow">YOUR ANSWER</div>
+        <h1>Calculation complete!</h1>
+        <p class="result">{{ result }}</p>
+        <a class="button-link" href="{{ url_for('home_page') }}">Calculate again</a>
+    </main>
+</body>
+</html>
